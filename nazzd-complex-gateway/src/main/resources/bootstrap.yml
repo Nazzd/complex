@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: nazzd-complex-gateway
+  profiles:
+    active: dev
+
+

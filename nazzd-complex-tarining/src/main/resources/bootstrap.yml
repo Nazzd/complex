@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: nazzd-complex-training
+  profiles:
+    active: dev
+

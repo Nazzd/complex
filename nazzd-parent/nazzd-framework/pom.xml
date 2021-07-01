@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.nazzd</groupId>
+        <artifactId>nazzd-parent</artifactId>
+        <version>0.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>nazzd-framework</artifactId>
+    <description>主要引入服务的公共依赖。</description>
+
+
+    <dependencies>
+        <!-- Web -->
+        <dependency>
+            <groupId>com.nazzd</groupId>
+            <artifactId>nazzd-starter-web</artifactId>
+        </dependency>
+        <!-- springdoc -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+        </dependency>
+        <!-- 日志 -->
+        <dependency>
+            <groupId>com.nazzd</groupId>
+            <artifactId>nazzd-starter-logging</artifactId>
+        </dependency>
+        <!-- 监控 -->
+        <dependency>
+            <groupId>com.nazzd</groupId>
+            <artifactId>nazzd-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- 服务发现客户端 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

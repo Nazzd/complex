@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.11.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.nazzd</groupId>
+    <artifactId>nazzd-parent</artifactId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>nazzd-framework</module>
+        <module>nazzd-starter-web</module>
+        <module>nazzd-starter-json</module>
+        <module>nazzd-component</module>
+        <module>nazzd-starter-logging</module>
+        <module>nazzd-starter-actuator</module>
+    </modules>
+
+    <properties>
+        <!-- 默认打包时跳过测试 -->
+        <skipTests>true</skipTests>
+        <!-- The zf-dpc version should be the same as the artifact version above -->
+        <nazzd.version>0.0.1</nazzd.version>
+        <!-- Dependency versions -->
+        <commons-io.version>2.7</commons-io.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <commons-text.version>1.9</commons-text.version>
+        <guava.version>30.1.1-jre</guava.version>
+        <fastjson.version>1.2.74</fastjson.version>
+        <spring-cloud.version>Greenwich.SR4</spring-cloud.version>
+        <springdoc.version>1.5.9</springdoc.version>
+        <mapstruct.version>1.4.0.Final</mapstruct.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.nazzd</groupId>
+                <artifactId>nazzd-component</artifactId>
+                <version>${nazzd.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nazzd</groupId>
+                <artifactId>nazzd-framework</artifactId>
+                <version>${nazzd.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nazzd</groupId>
+                <artifactId>nazzd-starter-json</artifactId>
+                <version>${nazzd.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nazzd</groupId>
+                <artifactId>nazzd-starter-logging</artifactId>
+                <version>${nazzd.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nazzd</groupId>
+                <artifactId>nazzd-starter-web</artifactId>
+                <version>${nazzd.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nazzd</groupId>
+                <artifactId>nazzd-starter-actuator</artifactId>
+                <version>${nazzd.version}</version>
+            </dependency>
+            <!-- 第三方工具库 -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons-lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${commons-text.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+            <!-- mapstruct -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
+
+            <!-- BOM imports last so we (could) selectively override dependencies above -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

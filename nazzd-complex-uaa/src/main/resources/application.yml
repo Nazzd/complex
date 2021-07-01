@@ -1,0 +1,44 @@
+server:
+  port: 40002
+
+logging:
+  level:
+    com.nazzd.complex.uaa: debug
+
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/nazzd-complex-uaa?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+
+eureka:
+  client:
+    instance-info-replication-interval-seconds: 10
+    registry-fetch-interval-seconds: 10
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
+
+security:
+  oauth2:
+    client:
+      client-id: "internal"
+      client-secret: "internal"
+    authorization:
+      token-key-access: "permitAll()"
+      check-token-access: "isAuthenticated()"
+      jwt:
+        key-store: "keystore.p12"
+        key-alias: "selfsigned"
+        key-password: "password"
+    resource:
+      id: ${spring.application.name}
+
+
+
+info:
+  tags:
+    environment: ${spring.profiles.active}

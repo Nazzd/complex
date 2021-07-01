@@ -1,0 +1,37 @@
+server:
+  port: 40001
+
+logging:
+  level:
+    com.nazzd.complex.training: debug
+
+eureka:
+  client:
+    instance-info-replication-interval-seconds: 10
+    registry-fetch-interval-seconds: 10
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
+
+security:
+  oauth2:
+    client:
+      client-id: "internal"
+      client-secret: "internal"
+      access-token-uri: http://nazzd-complex-uaa/oauth/token
+    resource:
+      id: ${spring.application.name}
+      jwt:
+        key-uri: http://nazzd-complex-uaa/oauth/token_key
+
+feign:
+  okhttp:
+    enabled: true
+
+info:
+  tags:
+    environment: ${spring.profiles.active}
+
+

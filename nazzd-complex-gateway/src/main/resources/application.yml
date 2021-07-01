@@ -1,0 +1,66 @@
+server:
+  port: 40000
+
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 300000
+  okhttp:
+    enabled: true
+
+eureka:
+  client:
+    instance-info-replication-interval-seconds: 10
+    registry-fetch-interval-seconds: 10
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
+
+security:
+  oauth2:
+    client:
+      client-id: webapp
+      client-secret: changeit
+      access-token-uri: http://nazzd-complex-uaa/oauth/token
+      user-authorization-uri: http://nazzd-complex-uaa/oauth/authorize
+    resource:
+      id: ${spring.application.name}
+      jwt:
+        key-uri: http://nazzd-complex-uaa/oauth/token_key
+
+
+zuul:
+  ignored-services: '*'
+  sensitive-headers: ''
+  retryable: true
+  semaphore:
+    max-semaphores: 5000
+  routes:
+    uaa:
+      path: /uaa/**
+      serviceId: nazzd-complex-uaa
+    training:
+      path: /training/**
+      serviceId: nazzd-complex-training
+    system:
+      path: /system/**
+      serviceId: nazzd-complex-system
+
+
+springdoc:
+  swagger-ui:
+    urls-primary-name: gateway
+    urls:
+      - name: gateway
+        url: /v3/api-docs
+      - name: training
+        url: /training/v3/api-docs
+      - name: uaa
+        url: /uaa/v2/api-docs
+      - name: system
+        url: /system/v3/api-docs
+
+info:
+  tags:
+    environment: ${spring.profiles.active}

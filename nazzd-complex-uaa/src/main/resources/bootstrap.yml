@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: nazzd-complex-uaa
+  profiles:
+    active: dev

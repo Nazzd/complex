@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: nazzd-service-registry
+  profiles:
+    active: standalone
+
